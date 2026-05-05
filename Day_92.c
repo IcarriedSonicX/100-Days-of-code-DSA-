@@ -1,0 +1,3 @@
+/* day 92 */
+#include <stdio.h>
+void swap(int*a,int*b){int t=*a;*a=*b;*b=t;}int p(int a[],int l,int h){int pv=a[h],i=l-1;for(int j=l;j<h;j++){if(a[j]<pv){i++;swap(&a[i],&a[j]);}}swap(&a[i+1],&a[h]);return i+1;}void qs(int a[],int l,int h){if(l<h){int pi=p(a,l,h);qs(a,l,pi-1);qs(a,pi+1,h);}}void main(){int n;scanf("%d",&n);int a[n];for(int i=0;i<n;i++)scanf("%d",&a[i]);qs(a,0,n-1);for(int i=0;i<n;i++)printf("%d ",a[i]);}

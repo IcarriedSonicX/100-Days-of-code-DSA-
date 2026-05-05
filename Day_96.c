@@ -1,0 +1,3 @@
+/* day 96 */
+#include <stdio.h>
+int m(int a[],int l,int m,int r){int i=l,j=m+1,k=0,t[1000],inv=0;while(i<=m&&j<=r){if(a[i]<=a[j])t[k++]=a[i++];else{t[k++]=a[j++];inv+=m-i+1;}}while(i<=m)t[k++]=a[i++];while(j<=r)t[k++]=a[j++];for(i=l,k=0;i<=r;i++,k++)a[i]=t[k];return inv;}int ms(int a[],int l,int r){int inv=0;if(l<r){int mid=(l+r)/2;inv+=ms(a,l,mid);inv+=ms(a,mid+1,r);inv+=m(a,l,mid,r);}return inv;}void main(){int n;scanf("%d",&n);int a[n];for(int i=0;i<n;i++)scanf("%d",&a[i]);printf("%d",ms(a,0,n-1));}
